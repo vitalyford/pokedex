@@ -1,0 +1,196 @@
+/* CSS Reset & Base Styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* CSS Variables - Theme System */
+:root {
+  /* Typography */
+  --font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'San Francisco', 'Helvetica Neue', Arial, sans-serif;
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 350ms ease;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --shadow-md: 0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.10);
+  --shadow-xl: 0 15px 35px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.12);
+}
+
+/* Light Theme (Default) */
+:root[data-theme="light"] {
+  --color-bg-primary: #f8f9fa;
+  --color-bg-secondary: #ffffff;
+  --color-bg-tertiary: #f1f3f5;
+  --color-text-primary: #2c3e50;
+  --color-text-secondary: #5a6c7d;
+  --color-text-tertiary: #8b96a5;
+  --color-border: #e1e8ed;
+  --color-accent: #4f46e5;
+  --color-accent-hover: #4338ca;
+  
+  /* Card Effects */
+  --card-backdrop-blur: none;
+  --card-bg-opacity: 1;
+  --shadow-card: var(--shadow-md);
+  --shadow-card-hover: var(--shadow-lg);
+}
+
+/* Dark Theme */
+:root[data-theme="dark"] {
+  --color-bg-primary: #0f172a;
+  --color-bg-secondary: #1e293b;
+  --color-bg-tertiary: #334155;
+  --color-text-primary: #e2e8f0;
+  --color-text-secondary: #cbd5e1;
+  --color-text-tertiary: #94a3b8;
+  --color-border: #334155;
+  --color-accent: #6366f1;
+  --color-accent-hover: #818cf8;
+  
+  /* Glassmorphism for Dark Mode */
+  --card-backdrop-blur: blur(10px);
+  --card-bg-opacity: 0.7;
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-card-hover: 0 12px 48px rgba(0, 0, 0, 0.5);
+}
+
+/* Auto-detect system preference on first load */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --color-bg-primary: #0f172a;
+    --color-bg-secondary: #1e293b;
+    --color-bg-tertiary: #334155;
+    --color-text-primary: #e2e8f0;
+    --color-text-secondary: #cbd5e1;
+    --color-text-tertiary: #94a3b8;
+    --color-border: #334155;
+    --color-accent: #6366f1;
+    --color-accent-hover: #818cf8;
+    --card-backdrop-blur: blur(10px);
+    --card-bg-opacity: 0.7;
+    --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --shadow-card-hover: 0 12px 48px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Pokemon Type Colors */
+:root {
+  --type-normal: linear-gradient(135deg, #a8a878 0%, #c6c6a7 100%);
+  --type-fire: linear-gradient(135deg, #f08030 0%, #f5ac78 100%);
+  --type-water: linear-gradient(135deg, #6890f0 0%, #9db7f5 100%);
+  --type-electric: linear-gradient(135deg, #f8d030 0%, #fae078 100%);
+  --type-grass: linear-gradient(135deg, #78c850 0%, #a7db8d 100%);
+  --type-ice: linear-gradient(135deg, #98d8d8 0%, #bce6e6 100%);
+  --type-fighting: linear-gradient(135deg, #c03028 0%, #d67873 100%);
+  --type-poison: linear-gradient(135deg, #a040a0 0%, #c183c1 100%);
+  --type-ground: linear-gradient(135deg, #e0c068 0%, #ead69c 100%);
+  --type-flying: linear-gradient(135deg, #a890f0 0%, #c6b7f5 100%);
+  --type-psychic: linear-gradient(135deg, #f85888 0%, #fa92b2 100%);
+  --type-bug: linear-gradient(135deg, #a8b820 0%, #c6d16e 100%);
+  --type-rock: linear-gradient(135deg, #b8a038 0%, #d1c17d 100%);
+  --type-ghost: linear-gradient(135deg, #705898 0%, #a292bc 100%);
+  --type-dragon: linear-gradient(135deg, #7038f8 0%, #a27dfa 100%);
+  --type-dark: linear-gradient(135deg, #705848 0%, #a29288 100%);
+  --type-steel: linear-gradient(135deg, #b8b8d0 0%, #d1d1e0 100%);
+  --type-fairy: linear-gradient(135deg, #ee99ac 0%, #f4bdc9 100%);
+}
+
+/* Base Styles */
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-system);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  transition: background-color var(--transition-base), color var(--transition-base);
+  min-height: 100vh;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-tertiary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-tertiary);
+}
+
+/* Utility Classes */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.fade-in {
+  animation: fadeIn var(--transition-base);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Shimmer Loading Animation */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-bg-tertiary) 0%,
+    var(--color-border) 50%,
+    var(--color-bg-tertiary) 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
